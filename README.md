@@ -1,5 +1,9 @@
 # playarea
 
+Play Java Examples:
+
+https://www.playframework.com/documentation/2.6.x/Tutorials
+
 Play framework api documentation
 https://www.playframework.com/documentation/2.6.x/api/java/overview-summary.html
 
