@@ -11,3 +11,6 @@ https://site.mockito.org
 
 Google Guice -> DI
 https://github.com/google/guice/wiki/GettingStarted
+
+Kafka links:
+http://www.stackframelayout.com/programowanie/kafka-simple-producer-consumer-example/
