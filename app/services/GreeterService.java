@@ -1,4 +1,5 @@
 package services;
 
-public class GreeterService {
+public interface GreeterService {
+    String greet(String name);
 }

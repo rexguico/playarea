@@ -1,4 +1,33 @@
 package filters;
 
-public class LoggingFilter {
+import play.mvc.*;
+import javax.inject.Inject;
+import akka.stream.Materializer;
+import play.Logger;
+
+import java.util.concurrent.CompletionStage;
+import java.util.function.Function;
+
+public class LoggingFilter extends Filter {
+
+    @Inject
+    public LoggingFilter(Materializer materializer) {
+        super(materializer);
+    }
+
+    @Override
+    public CompletionStage<Result> apply(
+        Function<Http.RequestHeader, CompletionStage<Result>> nextFilter,
+        Http.RequestHeader requestHeader) {
+        long startTime = System.currentTimeMillis();
+        return nextFilter.apply(requestHeader).thenApply(result -> {
+           long endTime = System.currentTimeMillis();
+           long requestTime = endTime - startTime;
+
+           Logger.info("{} {} took {}ms and return {}", requestHeader.method(),
+               requestHeader.uri(), requestTime, result.status());
+
+           return result.withHeader("Request-Time", "" + requestTime);
+        });
+    }
 }

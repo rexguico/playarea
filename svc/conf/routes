@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+GET     /hello                      controllers.HelloController.greet
+GET     /setcookie                  controllers.CookieController.setValue
+GET     /removecookie               controllers.CookieController.removeValue
+GET     /sessionlogin               controllers.SessionController.login
+GET     /sessionlogout              controllers.SessionController.logout
+GET     /sessionhome                controllers.SessionController.index
+GET     /verboseaction              controllers.SampleActionController.callVerbose
+GET     /passarg                    controllers.SampleActionController.passArg
+GET     /asyncexample               controllers.AsyncExampleController.index
+GET     /customasync                controllers.AsyncExampleController.customAsync
+GET     /downloadfile               controllers.FileController.index
+GET     /downloadfile2              controllers.FileController.downloadHelper
+GET     /downloadchunks             controllers.FileController.chunked
+GET     /checkgithub                controllers.RestController.callGitHub
+GET     /actorhello/:name           controllers.ActorController.sayHello(name: String)
+GET     /injectedhello/:name        controllers.ActorController.sayInjectedHello(name: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

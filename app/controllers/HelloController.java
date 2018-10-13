@@ -13,6 +13,7 @@ public class HelloController extends Controller {
     }
 
     public Result greet() {
-        return ok(views.html.hello.render());
+        String appName = config.getString("application_name");
+        return ok(views.html.hello.render(appName));
     }
 }
